@@ -1,0 +1,32 @@
+[
+  {
+    "type": "bank-draft",
+    "title": "Bank Draft",
+    "thumbnail": "https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "position": 0
+  },
+  {
+    "type": "bill-of-lading",
+    "title": "Bill of Lading",
+    "thumbnail": "https://images.pexels.com/photos/5395816/pexels-photo-5395816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "position": 1
+  },
+  {
+    "type": "invoice",
+    "title": "Invoice",
+    "thumbnail": "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "position": 2
+  },
+  {
+    "type": "bank-draft-2",
+    "title": "Bank Draft 2",
+    "thumbnail": "https://images.pexels.com/photos/20374457/pexels-photo-20374457/free-photo-of-photo-of-a-gray-tabby-cat-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "position": 3
+  },
+  {
+    "type": "bill - of - lading - 2",
+    "title": "Bill of Lading 2",
+    "thumbnail": "https://images.pexels.com/photos/6830192/pexels-photo-6830192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "position": 4
+  }
+]

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+}
+.wrapper{
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card{
+  box-shadow: 1px 1px 5px 1px rgb(230, 231, 231);;
+  width: 25%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+p{
+  margin: 0;
+  margin-bottom: 10px;
+}
+img{
+  width: 100%;
+}
+.shimmer {
+  height: 150px;
+  width: 300px;
+  background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmerEffect 1s infinite linear;
+}
+
+@keyframes shimmerEffect {
+  to {
+     background-position-x: 0%
+  }
+}
