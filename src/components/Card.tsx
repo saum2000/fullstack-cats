@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from "react";
 
-export default function Card({ card, index, isLoading, handleDragStart, handleDrop }) {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [currentImageSrc, setCurrentImageSrc] = useState("");
+interface CardProps {
+  card: {
+    title?: string;
+    type?: string;
+    thumbnail?: string;
+    position?: number;
+  };
+  index: number;
+  isLoading: boolean;
+  handleDragStart: (e: React.DragEvent<HTMLDivElement>, index: number) => void;
+  handleDrop: (e: React.DragEvent<HTMLDivElement>, index: number) => void;
+}
+
+export default function Card({ card, index, isLoading, handleDragStart, handleDrop }: CardProps) {
+  const [isOverlayVisible, setIsOverlayVisible] = useState<boolean>(false);
+  const [currentImageSrc, setCurrentImageSrc] = useState<string>("");
 
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOverlayVisible(false);
       }
@@ -17,12 +30,12 @@ export default function Card({ card, index, isLoading, handleDragStart, handleDr
     };
   }, []);
 
-  const handleCardClick = (imageSrc) => {
+  const handleCardClick = (imageSrc: string): void => {
     setCurrentImageSrc(imageSrc);
     setIsOverlayVisible(true);
   };
 
-  const closeOverlay = () => {
+  const closeOverlay = (): void => {
     setIsOverlayVisible(false);
   };
 

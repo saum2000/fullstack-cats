@@ -1,14 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card.jsx";
-import Timer from "./Timer.jsx";
+import Card from "./Card";
+import Timer from "./Timer";
 import "../App.css";
 
+interface CardData {
+  position?: number;
+  type?: string;
+  title?: string;
+  thumbnail?: string;
+}
+
 export default function Container() {
-  const [loading, setLoading] = useState(true);
-  const [currentCards, setCurrentCards] = useState([{}, {}, {}, {}, {}]); // added placeholder to show shimmer
-  const [originalCards, setOriginalCards] = useState([]);
-  
-  const getCatsData = async () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [currentCards, setCurrentCards] = useState<CardData[]>([
+    {},
+    {},
+    {},
+    {},
+    {},
+  ]); // added placeholder to show shimmer
+  const [originalCards, setOriginalCards] = useState<CardData[]>([]);
+
+  const getCatsData = async (): Promise<void> => {
     try {
       const response = await fetch("http://localhost:5000/cats");
       if (!response.ok) {
@@ -24,7 +37,7 @@ export default function Container() {
     }
   };
 
-  const updateCatsData = async () => {
+  const updateCatsData = async (): Promise<void> => {
     try {
       const response = await fetch("http://localhost:5000/cats", {
         method: "PUT",
@@ -44,7 +57,7 @@ export default function Container() {
     }
   };
 
-  const saveData = async () => {
+  const saveData = async (): Promise<void> => {
     if (
       currentCards?.length > 0 &&
       JSON.stringify(currentCards) !== JSON.stringify(originalCards)
@@ -58,12 +71,10 @@ export default function Container() {
   useEffect(() => {
     setLoading(true);
     getCatsData();
-
   }, []);
 
   useEffect(() => {
-    let interval;
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       saveData();
     }, 5000);
 
@@ -72,11 +83,17 @@ export default function Container() {
     };
   }, [currentCards, originalCards]);
 
-  const handleDragStart = (e, index) => {
-    e.dataTransfer.setData("cardIndex", index);
+  const handleDragStart = (
+    e: React.DragEvent<HTMLDivElement>,
+    index: number
+  ): void => {
+    e.dataTransfer.setData("cardIndex", index.toString());
   };
 
-  const handleDrop = (e, dropIndex) => {
+  const handleDrop = (
+    e: React.DragEvent<HTMLDivElement>,
+    dropIndex: number
+  ): void => {
     e.preventDefault();
     const draggedIndex = parseInt(e.dataTransfer.getData("cardIndex"), 10);
 
@@ -90,7 +107,7 @@ export default function Container() {
 
   return (
     <>
-      {!loading && <Timer loading={loading} />}
+      {!loading && <Timer />}
       <div className="wrapper" id="main-wrapper">
         {currentCards.map((cardData, i) => (
           <Card
